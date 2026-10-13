@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Карточка клиента {{ client.name }}{% endblock %}
+
+{% block content %}
+    <div class="card shadow">
+        <div class="card-header">
+            Карточка клиента
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{ client.name }}</h5>
+            <p class="card-text">{{ client.inn }}</p>
+            <p class="card-text">{{ client.get_industry_display }}</p>
+            <p class="card-text">{{ client.registration_date }}</p>
+            <p class="card-text">{% if client.is_active %}Активный{% else %}Неактивный{% endif %}</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'client_list' %}" class="btn btn-primary">Вернуться к списку клиентов</a>
+        </div>
+    </div>
+{% endblock %}

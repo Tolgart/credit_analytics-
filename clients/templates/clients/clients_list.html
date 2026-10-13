@@ -15,7 +15,7 @@
         <tbody>
             {% for client in clients %}
                 <tr>
-                    <td>{{ client.name }}</td>
+                    <td><a href="{% url 'client_detail' client.pk %}" class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover">{{ client.name }}</a></td>
                     <td>{{ client.inn }}</td>
                     <td>{{ client.get_industry_display }}</td>
                     <td>{% if client.is_active %}Активен{% else %}Неактивен{% endif %}</td>
