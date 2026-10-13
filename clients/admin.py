@@ -1,6 +1,7 @@
 from django.contrib import admin
 from clients.models import CorporateClient
 
+
 @admin.register(CorporateClient)
 class CorporateClientAdmin(admin.ModelAdmin):
     list_display = ('name', 'inn', 'industry', 'is_active')
