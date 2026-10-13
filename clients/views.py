@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from django.shortcuts import render
+from django.http import HttpResponse
 
-# Create your views here.
+from .models import CorporateClient
+
+def client_list(request):
+    clients = CorporateClient.objects.all()
+
+    return render(request, 'clients/clients_list.html', {'clients': clients})
