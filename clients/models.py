@@ -30,10 +30,25 @@ class CorporateClient(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
 
     def __str__(self):
-        return f'{self.name} - {self.inn}'
+        return f'{self.name}/{self.inn}'
 
     class Meta:
         verbose_name = 'Корпоративный клиент'
         verbose_name_plural = 'Корпоративные клиенты'
         ordering = ['-created_at']
+
+
+class FinancialStatement(models.Model):
+    client = models.ForeignKey('CorporateClient', on_delete=models.CASCADE, related_name='financial_statements')
+    period = models.CharField(max_length=20, verbose_name='Период отчета')
+    revenue = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Выручка')
+    ebitda = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='EBITDA')
+    net_debt = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Чистый долг')
+    equity = models.DecimalField(max_digits=15, decimal_places=2, verbose_name='Собственный капитал')
+    report_date = models.DateField(verbose_name='Дата отчета')
+
+    class Meta:
+        verbose_name = 'Финансовая отчетность'
+        verbose_name_plural = 'Финансовая отчетность'
+        ordering = ['-report_date']
 
