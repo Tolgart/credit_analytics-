@@ -50,5 +50,5 @@ class FinancialStatement(models.Model):
     class Meta:
         verbose_name = 'Финансовая отчетность'
         verbose_name_plural = 'Финансовая отчетность'
-        ordering = ['-report_date']
+        ordering = ['client', '-report_date']
 
