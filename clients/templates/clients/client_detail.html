@@ -28,16 +28,16 @@
                         <div class="card-header">Финансовые показатели, тыс. руб.</div>
                         <table class="table table-bordered">
                             <tr>
-                                {% for statement in financial_statements %}
-                                <td>
-                                    <div class="card-body">
-                                        <p class="card-text">Дата отчетности: {{  statement.report_date }}</p>
-                                        <p class="card-text">Выручка: {{  statement.revenue|floatformat:2 }}</p>
-                                        <p class="card-text">EBITDA: {{  statement.ebitda|floatformat:2 }}</p>
-                                        <p class="card-text">Чистый долг: {{  statement.net_debt|floatformat:2 }}</p>
-                                        <p class="card-text">Собственный капитал: {{  statement.equity|floatformat:2 }}</p>
-                                    </div>
-                                </td>
+                                {% for statement in financial_statements.values %}
+                                    <td>
+                                        <div class="card-body">
+                                            <p class="card-text">Дата отчетности: {{  statement.report_date }}</p>
+                                            <p class="card-text">Выручка: {{  statement.revenue|floatformat:2 }}</p>
+                                            <p class="card-text">EBITDA: {{  statement.ebitda|floatformat:2 }}</p>
+                                            <p class="card-text">Чистый долг: {{  statement.net_debt|floatformat:2 }}</p>
+                                            <p class="card-text">Собственный капитал: {{  statement.equity|floatformat:2 }}</p>
+                                        </div>
+                                    </td>
                                 {% endfor %}
                             </tr>
                         </table>
