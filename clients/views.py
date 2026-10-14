@@ -31,7 +31,5 @@ def client_detail(request, pk):
     return render(request, 'clients/client_detail.html',
                   {'client': client,
                    'financial_statements': (sply_financial_statements, full_last_year_financial_statements, current_period_financial_statements),
-                   'current_period_financial_statements': current_period_financial_statements,
-                   'full_last_year_financial_statements': full_last_year_financial_statements,
-                   'sply_financial_statements': sply_financial_statements},
+                   },
                   )
