@@ -3,19 +3,39 @@
 {% block title %}Карточка клиента {{ client.name }}{% endblock %}
 
 {% block content %}
-    <div class="card shadow">
-        <div class="card-header">
-            Карточка клиента
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">{{ client.name }}</h5>
-            <p class="card-text">{{ client.inn }}</p>
-            <p class="card-text">{{ client.get_industry_display }}</p>
-            <p class="card-text">{{ client.registration_date }}</p>
-            <p class="card-text">{% if client.is_active %}Активный{% else %}Неактивный{% endif %}</p>
-        </div>
-        <div class="card-footer">
-            <a href="{% url 'client_list' %}" class="btn btn-primary">Вернуться к списку клиентов</a>
-        </div>
-    </div>
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>
+                    <div class="card shadow">
+                        <div class="card-header">Карточка клиента</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ client.name }}</h5>
+                            <p class="card-text">{{ client.inn }}</p>
+                            <p class="card-text">{{ client.get_industry_display }}</p>
+                            <p class="card-text">{{ client.registration_date }}</p>
+                            <p class="card-text">{% if client.is_active %}Активный{% else %}Неактивный{% endif %}</p>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="card shadow">
+                        <div class="card-header">Финансовые показатели, тыс. руб.</div>
+                        <div class="card-body">
+                            <p class="card-text">Дата отчетности: {{  financial_statements.0.report_date }}</p>
+                            <p class="card-text">Выручка: {{  financial_statements.0.revenue|floatformat:2 }}</p>
+                            <p class="card-text">EBITDA: {{  financial_statements.0.ebitda|floatformat:2 }}</p>
+                            <p class="card-text">Чистый долг: {{  financial_statements.0.net_debt|floatformat:2 }}</p>
+                            <p class="card-text">Собственный капитал: {{  financial_statements.0.equity|floatformat:2 }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="{% url 'client_list' %}" class="btn btn-primary">Вернуться к списку клиентов</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}
