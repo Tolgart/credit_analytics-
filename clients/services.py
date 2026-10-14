@@ -20,6 +20,10 @@ def calculate_roe(ebitda, equity):
 
 
 def get_client_financial_summary(financial_statement):
+    """
+    Функция для расчёта всех финансовых коэффициентов за конкретный период и передачи их в виде
+    словаря
+    """
     if not financial_statement:
         return None
 
