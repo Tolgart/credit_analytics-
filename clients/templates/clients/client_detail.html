@@ -4,6 +4,9 @@
 
 {% block content %}
     <table class="table">
+        <div class="card-footer">
+            <a href="{% url 'client_list' %}" class="btn btn-primary">Вернуться к списку клиентов</a>
+        </div>
         <tbody>
             <tr>
                 <td>
@@ -38,9 +41,22 @@
                                 {% endfor %}
                             </tr>
                         </table>
-                        <div class="card-footer">
-                            <a href="{% url 'client_list' %}" class="btn btn-primary">Вернуться к списку клиентов</a>
-                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="card shadow">
+                        <div class="card-header">Ключевые финансовые коэффициенты</div>
+                            <div class="card-body">
+                                {% if financial_summary %}
+                                    <p class="card-text">Долг/капитал: {{  financial_summary.debt_to_equity|floatformat:2 }}</p>
+                                    <p class="card-text">Рентабельность по EBITDA: {{  financial_summary.ebitda_margin|floatformat:2 }}</p>
+                                    <p class="card-text">Рентабельность капитала: {{  financial_summary.roe|floatformat:2 }}</p>
+                                {% else %}
+                                    <p class="card-text">Финансовые показатели еще не добавлены</p>
+                                {% endif %}
+                            </div>
                     </div>
                 </td>
             </tr>

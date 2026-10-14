@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 from .models import CorporateClient, FinancialStatement
+from .services import get_client_financial_summary
 
 def client_list(request):
     clients = CorporateClient.objects.all()
@@ -31,5 +32,6 @@ def client_detail(request, pk):
     return render(request, 'clients/client_detail.html',
                   {'client': client,
                    'financial_statements': (sply_financial_statements, full_last_year_financial_statements, current_period_financial_statements),
+                   'financial_summary': get_client_financial_summary(current_period_financial_statements),
                    },
                   )
