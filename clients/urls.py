@@ -7,4 +7,5 @@ urlpatterns = [
     path('create/', views.client_create, name='client_create'),
     path('<int:pk>/update/', views.client_update, name='client_update'),
     path('<int:pk>/delete/', views.client_delete, name='client_delete'),
+    path('<int:client_pk>/statements/create/', views.statement_create, name='statement_create'),
 ]

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Добавление отчетности{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Добавление финансового отчёта</h2>
+    
+    {% crispy form %}
+
+    <a href="{% url 'client_detail' client.pk %}" class="btn btn-secondary mt-3">Вернуться в карточку клиента</a>
+</div>
+{% endblock %}

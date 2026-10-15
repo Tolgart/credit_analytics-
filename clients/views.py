@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import CorporateClient
-from .forms import CorporateClientForm
+from .forms import CorporateClientForm, FinancialStatementForm
 from .services import get_client_financial_summary, get_periods_for_analysis
 
 def client_list(request):
@@ -54,3 +54,18 @@ def client_delete(request, pk):
         return redirect('client_list')
 
     return render(request, 'clients/client_confirm_delete.html', {'client': client})
+
+def statement_create(request, client_pk):
+    client = get_object_or_404(CorporateClient, pk=client_pk)
+    if request.method == 'POST':
+        form = FinancialStatementForm(request.POST)
+        if form.is_valid():
+            statement = form.save(commit=False)
+            statement.client = client
+            statement.save()
+            return redirect('client_detail', pk=client_pk)
+
+    else:
+        form = FinancialStatementForm()
+
+    return render(request, 'clients/statement_form.html', {'form': form, 'client': client})

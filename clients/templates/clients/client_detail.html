@@ -5,9 +5,9 @@
 {% block content %}
     <table class="table">
         <div class="card-footer">
-            <a href="{% url 'client_list' %}" class="btn-outline theme-secondary">Вернуться к списку клиентов</a>
-            <a href="{% url 'client_update' client.pk %}" class="btn-outline theme-warning" role='button'>Редактировать</a>
-            <a href="{% url 'client_delete' client.pk %}" class="btn-outline theme-danger" role='button'>Удалить</a>
+            <a href="{% url 'client_list' %}" class="btn btn-outline-dark">Вернуться к списку клиентов</a>
+            <a href="{% url 'client_update' client.pk %}" class="btn btn-outline-warning">Редактировать</a>
+            <a href="{% url 'client_delete' client.pk %}" class="btn btn-outline-danger">Удалить</a>
         </div>
         <tbody>
             <tr>
@@ -20,6 +20,7 @@
                             <p class="card-text">Отрасль: {{ client.get_industry_display }}</p>
                             <p class="card-text">Дата регистрации: {{ client.registration_date }}</p>
                             <p class="card-text">Статус: {% if client.is_active %}Активный{% else %}Неактивный{% endif %}</p>
+                            <a href="{% url 'statement_create' client.pk %}" class="btn btn-outline-dark">Добавить финансовый отчет</a>
                         </div>
                     </div>
                 </td>

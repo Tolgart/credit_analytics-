@@ -5,26 +5,26 @@
 {% block content %}
 
 
-    <div class="container space-y-3">
-        <div class='row'>
+    <div class="container">
+        <div class='row mb-2'>
             <div class='column'>
-                <a href="{% url 'client_create' %}" role="button" class="btn-outline theme-secondary" >Создать клиента</a>
+                <a href="{% url 'client_create' %}" class="btn btn-outline-dark">Создать клиента</a>
             </div>
         </div>
         <div class="row text-center">        
             <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th><p class="fg-emphasis-primary">Название</p></th>
-                        <th><p class="fg-emphasis-primary">ИНН</p></th>
-                        <th><p class="fg-emphasis-primary">Отрасль</p></th>
-                        <th><p class="fg-emphasis-primary">Статус</p></th>
+                        <th><p class="text-primary-emphasis">Название</p></th>
+                        <th><p class="text-primary-emphasis">ИНН</p></th>
+                        <th><p class="text-primary-emphasis">Отрасль</p></th>
+                        <th><p class="text-primary-emphasis">Статус</p></th>
                     </tr>   
                 </thead>
                 <tbody>
                     {% for client in clients %}
                         <tr>
-                            <td><a href="{% url 'client_detail' client.pk %}" class="theme-secondary underline-offset-2 underline-20 hover:underline-100">{{ client.name }}</a></td>
+                            <td><a href="{% url 'client_detail' client.pk %}" class="btn btn-outline-dark">{{ client.name }}</a></td>
                             <td>{{ client.inn }}</td>
                             <td>{{ client.get_industry_display }}</td>
                             <td>{% if client.is_active %}Активен{% else %}Неактивен{% endif %}</td>

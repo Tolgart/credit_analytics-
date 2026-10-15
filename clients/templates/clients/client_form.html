@@ -1,20 +1,15 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}Создание клиента{% endblock %}
 
 {% block content %}
-    <div class="card shadow">
-        <div class="card-header">
-            Создание клиента
-        </div>
-        <div class="card-body shadow mb-3">
-            <form method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn-outline theme-success" role="button">Сохранить</button>
-                <a href="{% url 'client_list' %}" class="btn-outline theme-secondary">Вернуться к списку клиентов</a>
-            </form>
-        </div>
-    </div>
-{% endblock %}
+<div class="container mt-4">
+    <h2>Добавить отчет для {{ client.name }}</h2>
+    
+    {% crispy form %}
 
+    <a href="{% url 'client_list' %}" class="btn btn-secondary mt-3">Вернуться к списку клиентов</a>
+
+</div>
+{% endblock %}
