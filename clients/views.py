@@ -32,3 +32,25 @@ def client_create(request):
         form = CorporateClientForm()
 
     return render(request, 'clients/client_form.html', {'form': form})
+
+
+def client_update(request, pk):
+    client = get_object_or_404(CorporateClient, pk=pk)
+    if request.method == 'POST':
+        form = CorporateClientForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            return redirect('client_detail', pk=pk)
+    else:
+        form = CorporateClientForm(instance=client)
+
+    return render(request, 'clients/client_form.html', {'form': form})
+
+
+def client_delete(request, pk):
+    client = get_object_or_404(CorporateClient, pk=pk)
+    if request.method == 'POST':
+        client.delete()
+        return redirect('client_list')
+
+    return render(request, 'clients/client_confirm_delete.html', {'client': client})

@@ -5,7 +5,9 @@
 {% block content %}
     <table class="table">
         <div class="card-footer">
-            <a href="{% url 'client_list' %}" class="btn btn-dark">Вернуться к списку клиентов</a>
+            <a href="{% url 'client_list' %}" class="btn-outline theme-secondary">Вернуться к списку клиентов</a>
+            <a href="{% url 'client_update' client.pk %}" class="btn-outline theme-warning" role='button'>Редактировать</a>
+            <a href="{% url 'client_delete' client.pk %}" class="btn-outline theme-danger" role='button'>Удалить</a>
         </div>
         <tbody>
             <tr>

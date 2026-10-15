@@ -7,13 +7,14 @@
         <div class="card-header">
             Создание клиента
         </div>
-        <div class="card-body shadow">
-            <form method="post" class="form-control">
+        <div class="card-body shadow mb-3">
+            <form method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-dark">Сохранить</button>
-                <a href="{% url 'client_list' %}" class="btn btn-primary btn-light">Вернуться к списку клиентов</a>
+                <button type="submit" class="btn-outline theme-success" role="button">Сохранить</button>
+                <a href="{% url 'client_list' %}" class="btn-outline theme-secondary">Вернуться к списку клиентов</a>
             </form>
         </div>
     </div>
 {% endblock %}
+
