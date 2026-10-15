@@ -3,6 +3,7 @@
 {% block title %}Лист клиентов{% endblock %}
 
 {% block content %}
+    <a href="{% url 'client_create' %}" class="btn btn-dark">Создать клиента</a>
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>

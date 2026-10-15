@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import CorporateClient, FinancialStatement
+from .models import CorporateClient
+from .forms import CorporateClientForm
 from .services import get_client_financial_summary, get_periods_for_analysis
 
 def client_list(request):
@@ -20,3 +21,14 @@ def client_detail(request, pk):
                    'financial_summary': get_client_financial_summary(periods_for_analysis['current_period']),
                    },
                   )
+
+def client_create(request):
+    if request.method == 'POST':
+        form = CorporateClientForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('client_list')
+    else:
+        form = CorporateClientForm()
+
+    return render(request, 'clients/client_form.html', {'form': form})
